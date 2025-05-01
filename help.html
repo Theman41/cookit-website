@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - CookIt</title>
+    <meta name="description" content="Get help with CookIt app features, troubleshooting, and frequently asked questions. Find tutorials and support resources.">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Custom styles for help center */
+        .faq-item[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .search-results {
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <span class="text-3xl group-hover:rotate-12 transition-transform">🍳</span>
+                        <span class="text-2xl font-bold gradient-text">CookIt</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#pricing" class="nav-link">Pricing</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <a href="/#download" class="btn-primary">
+                        <i class="fas fa-download mr-2"></i>
+                        Download App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text" data-aos="fade-up">
+                How Can We Help?
+            </h1>
+            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Find answers to common questions, learn about features, and get support 
+                for your CookIt experience.
+            </p>
+            <div class="max-w-2xl mx-auto relative" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative">
+                    <input type="text" 
+                           placeholder="Search for help articles..." 
+                           class="w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 transition-all pr-12">
+                    <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <div class="search-results glass-card mt-2 rounded-xl p-4 absolute w-full z-10">
+                    <!-- Search results will be populated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="#getting-started" 
+                   class="glass-card p-8 rounded-xl text-center hover:shadow-lg transition-all"
+                   data-aos="fade-up">
+                    <i class="fas fa-rocket text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Getting Started</h3>
+                    <p class="text-gray-600">
+                        New to CookIt? Learn the basics and set up your account.
+                    </p>
+                </a>
+
+                <a href="#features-guide" 
+                   class="glass-card p-8 rounded-xl text-center hover:shadow-lg transition-all"
+                   data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-magic text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Features Guide</h3>
+                    <p class="text-gray-600">
+                        Explore CookIt's AI and AR features in detail.
+                    </p>
+                </a>
+
+                <a href="#troubleshooting" 
+                   class="glass-card p-8 rounded-xl text-center hover:shadow-lg transition-all"
+                   data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-wrench text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Troubleshooting</h3>
+                    <p class="text-gray-600">
+                        Find solutions to common issues and bugs.
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Topics -->
+    <section class="py-20 px-4 bg-white/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12">Popular Topics</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Getting Started -->
+                <div id="getting-started" class="space-y-4" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6">Getting Started</h3>
+                    <details class="glass-card p-6 rounded-xl cursor-pointer faq-item group">
+                        <summary class="flex items-center justify-between font-bold">
+                            How do I create an account?
+                            <i class="fas fa-chevron-down text-emerald-500 transition-transform faq-icon"></i>
+                        </summary>
+                        <div class="mt-4 text-gray-600">
+                            <p>Creating a CookIt account is easy:</p>
+                            <ol class="list-decimal ml-4 mt-2 space-y-2">
+                                <li>Download the CookIt app from App Store or Google Play</li>
+                                <li>Open the app and tap "Sign Up"</li>
+                                <li>Enter your email or continue with social media</li>
+                                <li>Complete your profile and preferences</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details class="glass-card p-6 rounded-xl cursor-pointer faq-item group">
+                        <summary class="flex items-center justify-between font-bold">
+                            How do I set up my kitchen preferences?
+                            <i class="fas fa-chevron-down text-emerald-500 transition-transform faq-icon"></i>
+                        </summary>
+                        <div class="mt-4 text-gray-600">
+                            <p>Customize your CookIt experience by:</p>
+                            <ul class="list-disc ml-4 mt-2 space-y-2">
+                                <li>Go to Settings > Kitchen Preferences</li>
+                                <li>Select your dietary restrictions</li>
+                                <li>Choose preferred cuisines</li>
+                                <li>Set cooking skill level</li>
+                                <li>Add kitchen equipment you own</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Features Guide -->
+                <div id="features-guide" class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-bold mb-6">Features Guide</h3>
+                    <details class="glass-card p-6 rounded-xl cursor-pointer faq-item group">
+                        <summary class="flex items-center justify-between font-bold">
+                            How does ingredient recognition work?
+                            <i class="fas fa-chevron-down text-emerald-500 transition-transform faq-icon"></i>
+                        </summary>
+                        <div class="mt-4 text-gray-600">
+                            <p>CookIt's AI-powered ingredient recognition:</p>
+                            <ul class="list-disc ml-4 mt-2 space-y-2">
+                                <li>Open the camera in the app</li>
+                                <li>Point at ingredients</li>
+                                <li>AI automatically identifies items</li>
+                                <li>Tap identified items to add to your inventory</li>
+                                <li>Get recipe suggestions based on available ingredients</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="glass-card p-6 rounded-xl cursor-pointer faq-item group">
+                        <summary class="flex items-center justify-between font-bold">
+                            How do I use AR cooking guidance?
+                            <i class="fas fa-chevron-down text-emerald-500 transition-transform faq-icon"></i>
+                        </summary>
+                        <div class="mt-4 text-gray-600">
+                            <p>Follow these steps to use AR features:</p>
+                            <ol class="list-decimal ml-4 mt-2 space-y-2">
+                                <li>Select a recipe and tap "Start Cooking"</li>
+                                <li>Point your camera at your cooking space</li>
+                                <li>Follow the AR overlays for ingredient placement</li>
+                                <li>Get real-time guidance on techniques</li>
+                                <li>Use voice commands to navigate steps</li>
+                            </ol>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div id="troubleshooting" class="mt-12" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6">Troubleshooting</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <details class="glass-card p-6 rounded-xl cursor-pointer faq-item group">
+                        <summary class="flex items-center justify-between font-bold">
+                            Camera not working properly?
+                            <i class="fas fa-chevron-down text-emerald-500 transition-transform faq-icon"></i>
+                        </summary>
+                        <div class="mt-4 text-gray-600">
+                            <p>Try these solutions:</p>
+                            <ol class="list-decimal ml-4 mt-2 space-y-2">
+                                <li>Check camera permissions in device settings</li>
+                                <li>Ensure adequate lighting</li>
+                                <li>Clean your camera lens</li>
+                                <li>Restart the app</li>
+                                <li>Update to the latest version</li>
+                            </ol>
+                        </div>
+                    </details>
+
+                    <details class="glass-card p-6 rounded-xl cursor-pointer faq-item group">
+                        <summary class="flex items-center justify-between font-bold">
+                            AR features not loading?
+                            <i class="fas fa-chevron-down text-emerald-500 transition-transform faq-icon"></i>
+                        </summary>
+                        <div class="mt-4 text-gray-600">
+                            <p>Follow these steps:</p>
+                            <ol class="list-decimal ml-4 mt-2 space-y-2">
+                                <li>Check device compatibility</li>
+                                <li>Ensure stable internet connection</li>
+                                <li>Clear app cache</li>
+                                <li>Calibrate device sensors</li>
+                                <li>Contact support if issue persists</li>
+                            </ol>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tutorials -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12">Video Tutorials</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card rounded-xl overflow-hidden" data-aos="fade-up">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3" 
+                             alt="Getting Started Tutorial" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-white hover:text-emerald-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Getting Started with CookIt</h3>
+                        <p class="text-gray-600">
+                            Learn the basics of using CookIt in this comprehensive tutorial.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620" 
+                             alt="AR Features Tutorial" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-white hover:text-emerald-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mastering AR Features</h3>
+                        <p class="text-gray-600">
+                            Discover how to use AR cooking guidance effectively.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1505935428862-770b6f24f629" 
+                             alt="AI Features Tutorial" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <i class="fas fa-play-circle text-4xl text-white hover:text-emerald-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Ingredient Recognition</h3>
+                        <p class="text-gray-600">
+                            Learn how to use AI to identify ingredients and get recipe suggestions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="py-20 px-4 bg-white/50">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="glass-card p-8 md:p-12 rounded-2xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6">Still Need Help?</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Our support team is available 24/7 to assist you with any questions or issues.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <a href="/contact.html" class="flex flex-col items-center p-6 bg-white rounded-xl hover:shadow-md transition-shadow">
+                        <i class="fas fa-envelope text-3xl text-emerald-500 mb-4"></i>
+                        <h3 class="font-bold mb-2">Email Support</h3>
+                        <p class="text-sm text-gray-600">Get help via email</p>
+                    </a>
+                    <a href="#" class="flex flex-col items-center p-6 bg-white rounded-xl hover:shadow-md transition-shadow">
+                        <i class="fas fa-comments text-3xl text-emerald-500 mb-4"></i>
+                        <h3 class="font-bold mb-2">Live Chat</h3>
+                        <p class="text-sm text-gray-600">Chat with our team</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CookIt</h3>
+                    <p class="text-gray-400">
+                        Transforming kitchens with AI technology and making cooking easier for everyone.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="careers.html" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="press.html" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="copyright-year"></span> CookIt. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Search functionality
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchResults = document.querySelector('.search-results');
+        const helpContent = [
+            { title: 'How do I create an account?', link: '#getting-started' },
+            { title: 'Setting up kitchen preferences', link: '#getting-started' },
+            { title: 'Using ingredient recognition', link: '#features-guide' },
+            { title: 'AR cooking guidance tutorial', link: '#features-guide' },
+            { title: 'Camera troubleshooting', link: '#troubleshooting' },
+            { title: 'AR features not loading', link: '#troubleshooting' }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const filteredResults = helpContent.filter(item => 
+                item.title.toLowerCase().includes(query)
+            );
+
+            if (filteredResults.length > 0) {
+                searchResults.innerHTML = filteredResults.map(item => `
+                    <a href="${item.link}" class="block p-2 hover:bg-emerald-50 rounded-lg">
+                        <i class="fas fa-search text-emerald-500 mr-2"></i>
+                        ${item.title}
+                    </a>
+                `).join('');
+                searchResults.classList.add('active');
+            } else {
+                searchResults.innerHTML = `
+                    <p class="p-2 text-gray-500">No results found</p>
+                `;
+                searchResults.classList.add('active');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Video tutorial click handlers
+        document.querySelectorAll('.fa-play-circle').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Video tutorial coming soon!');
+            });
+        });
+
+        // Live chat button
+        document.querySelector('a:has(.fa-comments)').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Live chat feature coming soon!');
+        });
+    </script>
+</body>
+</html>
