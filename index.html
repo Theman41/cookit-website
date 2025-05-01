@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookIt - AI-Powered Cooking Assistant</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFF0EA 100%);
+        }
+        
+        .feature-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">CookIt</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-[#FF6B6B] transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-[#FF6B6B] transition-colors">How It Works</a>
+                    <a href="#demo" class="text-gray-600 hover:text-[#FF6B6B] transition-colors">Demo</a>
+                    <button onclick="showWaitlist()" class="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+                        Join Waitlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900">
+                    Cook Smarter with
+                    <span class="gradient-text">AI & AR</span>
+                </h1>
+                <p class="mt-6 text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                    Transform your kitchen into a smart cooking space. Scan ingredients,
+                    get personalized recipes, and follow AR cooking guides in real-time.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showWaitlist()" class="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity">
+                        Get Early Access
+                    </button>
+                    <button onclick="showDemo()" class="bg-white text-[#FF6B6B] px-8 py-3 rounded-full border-2 border-[#FF6B6B] hover:bg-red-50 transition-colors">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+            <!-- Hero Image -->
+            <div class="mt-16 relative max-w-4xl mx-auto">
+                <div class="aspect-[16/9] bg-gradient-to-b from-[#FF6B6B]/10 to-[#FF8E53]/10 rounded-2xl flex items-center justify-center">
+                    <p class="text-gray-500">Demo Video Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-900">Smart Features</h2>
+                <p class="mt-4 text-xl text-gray-600">Everything you need to cook like a pro</p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#FF6B6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Ingredient Recognition</h3>
+                    <p class="mt-2 text-gray-600">Instantly identify ingredients using your camera or smart glasses.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#FF6B6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Smart Recipe Generation</h3>
+                    <p class="mt-2 text-gray-600">Get personalized recipes based on your available ingredients.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-[#FF6B6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">AR Cooking Guide</h3>
+                    <p class="mt-2 text-gray-600">Follow step-by-step instructions with AR overlays in your kitchen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-900">How It Works</h2>
+                <p class="mt-4 text-xl text-gray-600">Three simple steps to transform your cooking</p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-xl font-bold text-[#FF6B6B]">1</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Scan Ingredients</h3>
+                    <p class="mt-2 text-gray-600">Point your camera at ingredients to instantly identify them.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-xl font-bold text-[#FF6B6B]">2</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Get Recipes</h3>
+                    <p class="mt-2 text-gray-600">Receive personalized recipe suggestions based on your ingredients.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-xl font-bold text-[#FF6B6B]">3</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Cook with AR</h3>
+                    <p class="mt-2 text-gray-600">Follow step-by-step AR instructions for perfect results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-900">Join the Waitlist</h3>
+                <button onclick="hideWaitlist()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="waitlistForm" onsubmit="submitWaitlist(event)">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <input type="email" id="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#FF6B6B] focus:ring-[#FF6B6B]">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity">
+                    Join Waitlist
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function showWaitlist() {
+            document.getElementById('waitlistModal').classList.remove('hidden');
+        }
+
+        function hideWaitlist() {
+            document.getElementById('waitlistModal').classList.add('hidden');
+        }
+
+        function submitWaitlist(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            // Here you would typically send this to your backend
+            console.log('Submitted email:', email);
+            alert('Thanks for joining our waitlist! We\'ll be in touch soon.');
+            hideWaitlist();
+        }
+
+        function showDemo() {
+            alert('Demo coming soon! Join our waitlist to be the first to try it.');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('waitlistModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideWaitlist();
+            }
+        });
+    </script>
+</body>
+</html>
