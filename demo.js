@@ -39,10 +39,8 @@ function startScanning() {
     const scanner = document.getElementById('ai-scanner');
     scanner.classList.add('scanning');
     
-    // Hide other buttons during scan
     document.getElementById('start-scan').disabled = true;
     
-    // Simulate AI recognition
     setTimeout(() => {
         showRecognizedIngredients();
     }, 2000);
@@ -55,7 +53,6 @@ function showRecognizedIngredients() {
     const scanner = document.getElementById('ai-scanner');
     scanner.classList.remove('scanning');
     
-    // Add ingredient markers
     ingredients.forEach((ingredient, index) => {
         setTimeout(() => {
             const marker = document.createElement('div');
@@ -71,25 +68,22 @@ function showRecognizedIngredients() {
             `;
             scanner.appendChild(marker);
             
-            // Show generate button after all ingredients are marked
             if (index === ingredients.length - 1) {
                 setTimeout(() => {
                     document.getElementById('generate-recipe').classList.remove('hidden');
                 }, 500);
             }
-        }, index * 300); // Stagger the appearance of markers
+        }, index * 300);
     });
 }
 
 function generateRecipe() {
     demoState.currentRecipe = sampleRecipe;
     
-    // Animate recipe generation
     const recipeCard = document.getElementById('recipe-card');
     recipeCard.classList.remove('hidden');
     recipeCard.classList.add('slide-in');
     
-    // Populate recipe content
     document.getElementById('recipe-name').textContent = sampleRecipe.name;
     
     const ingredientsList = document.getElementById('recipe-ingredients');
@@ -102,7 +96,6 @@ function generateRecipe() {
         .map(step => `<li class="mb-2">${step}</li>`)
         .join('');
     
-    // Show AR mode button
     document.getElementById('start-ar').classList.remove('hidden');
     document.getElementById('generate-recipe').disabled = true;
 }
@@ -111,12 +104,10 @@ function startARMode() {
     const demoContainer = document.getElementById('demo-container');
     demoContainer.classList.add('ar-mode');
     
-    // Show navigation buttons
     document.getElementById('prev-step').classList.remove('hidden');
     document.getElementById('next-step').classList.remove('hidden');
     document.getElementById('start-ar').disabled = true;
     
-    // Show first step
     document.getElementById('ar-overlay').classList.remove('hidden');
     showARStep(0);
 }
@@ -135,11 +126,9 @@ function showARStep(stepIndex) {
         </div>
     `;
     
-    // Update progress
     const progress = ((stepIndex + 1) / demoState.currentRecipe.steps.length) * 100;
     document.getElementById('ar-progress').style.width = `${progress}%`;
     
-    // Update button states
     document.getElementById('prev-step').disabled = stepIndex === 0;
     document.getElementById('next-step').disabled = stepIndex === demoState.currentRecipe.steps.length - 1;
 }
