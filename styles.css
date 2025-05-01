@@ -1,140 +1,119 @@
-/* Updated color scheme */
 :root {
-    --primary: #000000;
-    --secondary: #ffffff;
-    --accent: #333333;
-    --dark: #0F172A;
+    --primary: #22C55E;
+    --secondary: #4ADE80;
+    --accent: #86EFAC;
+    --dark: #064E3B;
+    --light: #ECFDF5;
 }
 
 body {
-    background: #ffffff;
-    color: #000000;
+    background: var(--light);
+    color: var(--dark);
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Logo styles */
-.logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+/* Hero Animation */
+.hero-logo {
+    animation: dropIn 1.5s ease-out;
 }
 
-/* Updated Magical Elements with B&W theme */
-.magic-card {
-    background: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+@keyframes dropIn {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.magic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary);
+.big-logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
 }
 
-/* Video Container */
-.video-container {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+.big-logo:hover {
+    transform: rotate(10deg) scale(1.1);
 }
 
-.video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Updated Button Styles */
-.magic-button {
-    background: #000000;
-    color: #ffffff;
-    border: 2px solid #000000;
-    padding: 12px 24px;
-    border-radius: 12px;
+/* Playful Buttons */
+.fun-button {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
     font-weight: bold;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
 }
 
-.magic-button:hover {
-    background: #ffffff;
-    color: #000000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.fun-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
 }
 
 /* Feature Cards */
 .feature-card {
-    background: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 20px;
+    background: white;
+    border-radius: 24px;
     padding: 2rem;
     transition: all 0.3s ease;
-    text-align: center;
+    border: 3px solid var(--accent);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
 }
 
 .feature-icon {
-    font-size: 48px;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+/* Section Styling */
+.section-title {
+    color: var(--dark);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
     margin-bottom: 1rem;
 }
 
-/* Navigation */
-.nav-link {
-    color: #000000;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #666666;
-}
-
-/* Updated text styles */
-.section-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
 .section-subtitle {
+    color: var(--primary);
     font-size: 1.2rem;
-    color: #666666;
-    margin-bottom: 3rem;
     text-align: center;
+    margin-bottom: 3rem;
 }
 
-/* Feature Grid */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
 }
 
-/* Demo Section */
-.demo-container {
-    background: #ffffff;
-    border: 2px solid #000000;
-}
-
-.demo-button {
-    background: #000000;
-    color: #ffffff;
-    border: 2px solid #000000;
-}
-
-.demo-button:hover {
-    background: #ffffff;
-    color: #000000;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
 }
