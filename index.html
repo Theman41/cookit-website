@@ -3,143 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookIt - Smart Cooking Assistant</title>
+    <title>CookIt - AI Cooking Revolution</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Three.js for 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Add GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Add Particles.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100 overflow-x-hidden">
+    <!-- Particle Background -->
+    <div id="particles-js" class="fixed inset-0 z-0"></div>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas" class="fixed inset-0 z-0"></canvas>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-emerald-500 z-50 flex items-center justify-center">
+        <div class="text-center text-white">
+            <div class="loading-spinner mb-4"></div>
+            <div class="text-2xl">Preparing your cooking experience...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-white/10 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="text-2xl font-bold gradient-text">CookIt</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#demos" class="nav-link">Demos</a>
+                    <a href="#join" class="nav-link">Join</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Main Content -->
-    <main class="relative min-h-screen">
+    <main class="relative pt-16">
         <!-- Hero Section -->
-        <section class="flex flex-col items-center justify-center min-h-screen px-4 relative overflow-hidden">
-            <!-- Interactive Food Icons -->
-            <div class="food-icons">
-                <span class="food-icon">🥑</span>
-                <span class="food-icon">🍅</span>
-                <span class="food-icon">🥕</span>
-                <span class="food-icon">🥬</span>
-                <span class="food-icon">🧄</span>
-                <span class="food-icon">🥦</span>
-            </div>
-
-            <!-- Main Title -->
-            <div class="text-center z-10 mb-16">
-                <h1 class="app-title text-8xl font-bold mb-6">CookIt</h1>
-                <p class="text-2xl text-emerald-700 mb-12">Your AI Cooking Companion</p>
+        <section class="min-h-screen flex items-center justify-center px-4 relative">
+            <div class="text-center z-10">
+                <h1 class="mega-title text-8xl font-bold mb-6">CookIt</h1>
+                <p class="text-2xl text-emerald-700 mb-12 typing-text">Your AI-Powered Kitchen Assistant</p>
                 
-                <!-- Interactive Demo Button -->
-                <button class="try-demo-btn">
-                    Try Interactive Demo
-                </button>
-            </div>
-
-            <!-- Interactive Demo Section -->
-            <div id="demo-container" class="hidden max-w-lg w-full bg-white rounded-2xl shadow-xl p-6">
-                <div class="demo-header flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-semibold text-emerald-700">Ingredient Scanner</h3>
-                    <button class="close-demo">×</button>
-                </div>
-                
-                <div class="demo-screen bg-gray-100 rounded-xl p-4 mb-6 relative min-h-[300px]">
-                    <div class="scan-area"></div>
-                    <div id="ingredients-list" class="space-y-2"></div>
-                </div>
-
-                <div class="demo-controls flex gap-4">
-                    <button class="scan-btn">Start Scan</button>
-                    <button class="generate-btn hidden">Generate Recipe</button>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <button class="mega-button" onclick="showDemo('scanner')">
+                        Try Scanner
+                        <div class="button-glow"></div>
+                    </button>
+                    <button class="mega-button-secondary" onclick="showDemo('ar')">
+                        AR Demo
+                        <div class="button-glow"></div>
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Features Grid -->
-        <section class="py-20 px-4 bg-white/50 backdrop-blur-sm">
+        <!-- Features Section -->
+        <section id="features" class="py-20 px-4">
             <div class="max-w-6xl mx-auto">
+                <h2 class="section-title text-4xl font-bold text-center mb-16">Magical Features</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="feature-card">
-                        <div class="text-4xl mb-4">🔍</div>
-                        <h3 class="text-xl font-bold mb-2">Smart Scanner</h3>
-                        <p>Instantly identify ingredients with AI</p>
+                    <div class="mega-card" data-tilt>
+                        <div class="card-content">
+                            <div class="text-4xl mb-4">🔍</div>
+                            <h3 class="text-xl font-bold mb-2">Smart Scanner</h3>
+                            <p>Advanced AI recognizes ingredients instantly</p>
+                            <button class="card-button" onclick="showFeatureDemo('scanner')">Try Now</button>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="text-4xl mb-4">✨</div>
-                        <h3 class="text-xl font-bold mb-2">Recipe Magic</h3>
-                        <p>Get personalized recipe suggestions</p>
+                    <div class="mega-card" data-tilt>
+                        <div class="card-content">
+                            <div class="text-4xl mb-4">🧪</div>
+                            <h3 class="text-xl font-bold mb-2">Recipe Generator</h3>
+                            <p>Get personalized recipes from your ingredients</p>
+                            <button class="card-button" onclick="showFeatureDemo('recipe')">Try Now</button>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="text-4xl mb-4">📱</div>
-                        <h3 class="text-xl font-bold mb-2">AR Guide</h3>
-                        <p>Follow recipes in augmented reality</p>
+                    <div class="mega-card" data-tilt>
+                        <div class="card-content">
+                            <div class="text-4xl mb-4">👨‍🍳</div>
+                            <h3 class="text-xl font-bold mb-2">AR Cooking</h3>
+                            <p>Follow recipes with AR guidance</p>
+                            <button class="card-button" onclick="showFeatureDemo('ar')">Try Now</button>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demos Section -->
+        <section id="demos" class="py-20 px-4 bg-white/20 backdrop-blur-md">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="section-title text-4xl font-bold text-center mb-16">Interactive Demos</h2>
+                
+                <!-- Demo Tabs -->
+                <div class="demo-tabs flex justify-center mb-8">
+                    <button class="demo-tab active" data-demo="scanner">Scanner</button>
+                    <button class="demo-tab" data-demo="recipe">Recipe</button>
+                    <button class="demo-tab" data-demo="ar">AR View</button>
+                </div>
+
+                <!-- Demo Containers -->
+                <div class="demo-containers relative">
+                    <!-- Scanner Demo -->
+                    <div id="scanner-demo" class="demo-container active">
+                        <div class="demo-phone">
+                            <div class="demo-screen">
+                                <div class="scan-area"></div>
+                                <div id="detected-ingredients"></div>
+                            </div>
+                            <button class="demo-button" onclick="startScanning()">Start Scan</button>
+                        </div>
+                    </div>
+
+                    <!-- Recipe Demo -->
+                    <div id="recipe-demo" class="demo-container">
+                        <div class="recipe-generator">
+                            <div class="ingredients-list"></div>
+                            <div class="recipe-result"></div>
+                        </div>
+                    </div>
+
+                    <!-- AR Demo -->
+                    <div id="ar-demo" class="demo-container">
+                        <div class="ar-view">
+                            <div class="ar-overlay"></div>
+                            <div class="ar-instructions"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Section -->
+        <section id="join" class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="mega-form-container">
+                    <h2 class="section-title text-4xl font-bold mb-8">Join the Revolution</h2>
+                    <form class="join-form" onsubmit="handleJoin(event)">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email" class="mega-input" required>
+                            <button type="submit" class="mega-submit">
+                                Join Waitlist
+                                <div class="submit-particles"></div>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
     <style>
-        /* Smooth Gradients */
-        .app-title {
-            background: linear-gradient(45deg, #059669, #10B981);
+        /* Add your previous styles here and these new ones: */
+
+        /* Mega Title Animation */
+        .mega-title {
+            background: linear-gradient(45deg, #059669, #10B981, #34D399);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+            animation: titleGlow 3s ease-in-out infinite;
         }
 
-        /* Floating Food Icons */
-        .food-icons {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 30px rgba(16, 185, 129, 0.3); }
+            50% { text-shadow: 0 0 50px rgba(16, 185, 129, 0.6); }
         }
 
-        .food-icon {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.5;
-            transition: all 0.3s ease;
+        /* Typing Animation */
+        .typing-text {
+            border-right: 2px solid #10B981;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
 
-        /* Feature Cards */
-        .feature-card {
+        /* Mega Cards */
+        .mega-card {
             background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #10B981;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+        .mega-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(16, 185, 129, 0.2),
+                0 0 20px rgba(16, 185, 129, 0.3);
         }
 
-        /* Interactive Demo Button */
-        .try-demo-btn {
-            background: linear-gradient(45deg, #059669, #10B981);
-            color: white;
+        /* Demo Tabs */
+        .demo-tab {
             padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.5);
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            margin: 0 0.5rem;
             transition: all 0.3s ease;
         }
 
-        .try-demo-btn:hover {
-            transform: translateY(-2px);
+        .demo-tab.active {
+            background: #10B981;
+            color: white;
             box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
         }
 
-        /* Demo Container */
-        #demo-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 100;
-            transition: all 0.3s ease;
+        /* Interactive Elements */
+        .demo-phone {
+            width: 300px;
+            height: 600px;
+            background: white;
+            border-radius: 40px;
+            padding: 20px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .scan-area {
@@ -148,139 +234,162 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: #10B981;
+            background: linear-gradient(90deg, transparent, #10B981, transparent);
             opacity: 0;
             transition: all 0.3s ease;
         }
 
         .scanning .scan-area {
             opacity: 1;
-            animation: scan 2s linear infinite;
+            animation: scanning 2s linear infinite;
         }
 
-        @keyframes scan {
+        @keyframes scanning {
             0% { transform: translateY(0); }
-            100% { transform: translateY(300px); }
+            100% { transform: translateY(100%); }
         }
 
-        .scan-btn, .generate-btn {
+        /* Particle Effects */
+        .submit-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .submit-particles span {
+            position: absolute;
+            width: 4px;
+            height: 4px;
             background: #10B981;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            border-radius: 50%;
+            animation: particle-burst 1s ease-out forwards;
         }
 
-        .scan-btn:hover, .generate-btn:hover {
-            background: #059669;
-        }
-
-        .close-demo {
-            font-size: 24px;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .close-demo:hover {
-            color: #000;
-        }
-
-        .ingredient-marker {
-            background: rgba(16, 185, 129, 0.1);
-            border: 2px solid #10B981;
-            border-radius: 8px;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        @keyframes particle-burst {
+            0% { transform: translate(0, 0); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
         }
     </style>
 
     <script>
-        // Food Icons Animation
-        function setupFoodIcons() {
-            const icons = document.querySelectorAll('.food-icon');
-            icons.forEach((icon, index) => {
-                const angle = (index / icons.length) * Math.PI * 2;
-                const radius = 150;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-                
-                icon.style.left = `calc(50% + ${x}px)`;
-                icon.style.top = `calc(50% + ${y}px)`;
-                
-                setInterval(() => {
-                    icon.style.transform = `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px)`;
-                }, 2000);
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#10B981' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true
+                }
+            }
+        });
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Demo Functionality
+        function showDemo(type) {
+            const demos = document.querySelectorAll('.demo-container');
+            const tabs = document.querySelectorAll('.demo-tab');
+            
+            demos.forEach(demo => demo.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(`${type}-demo`).classList.add('active');
+            document.querySelector(`[data-demo="${type}"]`).classList.add('active');
+        }
+
+        // Scanner Demo
+        function startScanning() {
+            const screen = document.querySelector('.demo-screen');
+            screen.classList.add('scanning');
+            
+            setTimeout(() => {
+                screen.classList.remove('scanning');
+                showDetectedIngredients();
+            }, 2000);
+        }
+
+        function showDetectedIngredients() {
+            const ingredients = [
+                { name: 'Tomatoes', confidence: 98 },
+                { name: 'Onions', confidence: 96 },
+                { name: 'Bell Peppers', confidence: 95 }
+            ];
+
+            const container = document.getElementById('detected-ingredients');
+            container.innerHTML = '';
+
+            ingredients.forEach((ing, index) => {
+                setTimeout(() => {
+                    const div = document.createElement('div');
+                    div.className = 'ingredient-marker';
+                    div.innerHTML = `
+                        <span>${ing.name}</span>
+                        <span class="confidence">${ing.confidence}%</span>
+                    `;
+                    container.appendChild(div);
+                }, index * 500);
             });
         }
 
-        // Interactive Demo
-        document.addEventListener('DOMContentLoaded', () => {
-            setupFoodIcons();
+        // Form Submission
+        function handleJoin(e) {
+            e.preventDefault();
+            const button = e.target.querySelector('button');
+            createParticles(button);
+            button.textContent = 'Welcome Aboard! 🎉';
+            setTimeout(() => {
+                button.textContent = 'Join Waitlist';
+            }, 2000);
+        }
 
-            const demoBtn = document.querySelector('.try-demo-btn');
-            const demoContainer = document.getElementById('demo-container');
-            const closeDemo = document.querySelector('.close-demo');
-            const scanBtn = document.querySelector('.scan-btn');
-            const generateBtn = document.querySelector('.generate-btn');
-            const demoScreen = document.querySelector('.demo-screen');
-            const ingredientsList = document.getElementById('ingredients-list');
-
-            const ingredients = [
-                { name: 'Tomatoes', confidence: '98%' },
-                { name: 'Onions', confidence: '96%' },
-                { name: 'Bell Peppers', confidence: '95%' },
-                { name: 'Garlic', confidence: '97%' }
-            ];
-
-            demoBtn.addEventListener('click', () => {
-                demoContainer.classList.remove('hidden');
-            });
-
-            closeDemo.addEventListener('click', () => {
-                demoContainer.classList.add('hidden');
-                resetDemo();
-            });
-
-            scanBtn.addEventListener('click', () => {
-                demoScreen.classList.add('scanning');
-                scanBtn.disabled = true;
-                
-                setTimeout(() => {
-                    demoScreen.classList.remove('scanning');
-                    showIngredients();
-                }, 2000);
-            });
-
-            function showIngredients() {
-                ingredientsList.innerHTML = '';
-                ingredients.forEach((ingredient, index) => {
-                    setTimeout(() => {
-                        const marker = document.createElement('div');
-                        marker.className = 'ingredient-marker';
-                        marker.innerHTML = `
-                            <span>${ingredient.name}</span>
-                            <span class="text-emerald-600">${ingredient.confidence}</span>
-                        `;
-                        ingredientsList.appendChild(marker);
-
-                        if (index === ingredients.length - 1) {
-                            generateBtn.classList.remove('hidden');
-                        }
-                    }, index * 500);
-                });
+        function createParticles(element) {
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('span');
+                particle.style.setProperty('--x', `${(Math.random() - 0.5) * 100}px`);
+                particle.style.setProperty('--y', `${(Math.random() - 0.5) * 100}px`);
+                element.querySelector('.submit-particles').appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
             }
+        }
 
-            function resetDemo() {
-                demoScreen.classList.remove('scanning');
-                ingredientsList.innerHTML = '';
-                generateBtn.classList.add('hidden');
-                scanBtn.disabled = false;
-            }
+        // 3D Background Effect
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('bg-canvas'),
+            alpha: true
         });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 5;
+
+        const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+        const material = new THREE.MeshBasicMaterial({ color: 0x10B981, wireframe: true });
+        const torus = new THREE.Mesh(geometry, material);
+        scene.add(torus);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            torus.rotation.x += 0.01;
+            torus.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+
+        animate();
     </script>
 </body>
 </html>
