@@ -1,183 +1,223 @@
-// Performance optimized script
+// Performance optimized initialization
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize AOS with optimized settings
+    initializeAOS();
+    setupMobileMenu();
+    setupSmoothScroll();
+    setupForms();
+    updateCopyrightYear();
+    handleURLParameters();
+});
+
+// Initialize AOS with optimized settings
+function initializeAOS() {
     AOS.init({
         duration: 800,
         once: true,
         disable: 'mobile' // Disable animations on mobile for better performance
     });
+}
 
-    // Debounced scroll handler for better performance
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (scrollTimeout) {
-            window.cancelAnimationFrame(scrollTimeout);
-        }
-        scrollTimeout = window.requestAnimationFrame(() => {
-            // Handle scroll events
-        });
-    });
-
-    // Optimized smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Mobile menu with improved touch response
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
+// Mobile menu handling with improved touch response
+function setupMobileMenu() {
+    const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const body = document.body;
+    let isMenuOpen = false;
 
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
             mobileMenu.classList.toggle('hidden');
-            body.classList.toggle('overflow-hidden');
+            body.style.overflow = isMenuOpen ? 'hidden' : '';
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+            if (isMenuOpen && !mobileMenu.contains(e.target) && e.target !== menuButton) {
                 mobileMenu.classList.add('hidden');
-                body.classList.remove('overflow-hidden');
+                body.style.overflow = '';
+                isMenuOpen = false;
             }
         });
     }
+}
 
-    // Optimized form handling
-    const handleFormSubmit = async (form, options = {}) => {
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        
-        try {
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (options.loadingText || 'Processing...');
-            
-            // Simulate API call with timeout
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            if (options.successCallback) {
-                options.successCallback();
+// Smooth scroll with performance optimization
+function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Update URL without triggering scroll
+                history.pushState(null, null, targetId);
             }
-            
-            form.reset();
-        } catch (error) {
-            console.error('Form submission error:', error);
-            alert(options.errorMessage || 'An error occurred. Please try again.');
-        } finally {
-            submitBtn.innerHTML = originalText;
-        }
-    };
+        });
+    });
+}
 
-    // Newsletter form handling
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', async (e) => {
+// Optimized form handling
+function setupForms() {
+    setupNewsletterForm();
+    setupContactForm();
+    setupPaymentForm();
+}
+
+function setupNewsletterForm() {
+    const form = document.getElementById('newsletter-form');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await handleFormSubmit(e.target, {
-                loadingText: 'Subscribing...',
-                successCallback: () => {
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'text-green-500 mt-2 text-sm';
-                    successMessage.textContent = 'Thank you for subscribing!';
-                    e.target.appendChild(successMessage);
-                    setTimeout(() => successMessage.remove(), 3000);
-                },
-                errorMessage: 'Failed to subscribe. Please try again.'
-            });
+            const emailInput = form.querySelector('input[type="email"]');
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            if (!emailInput.value) return;
+
+            try {
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Subscribing...';
+
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                showToast('Successfully subscribed to newsletter!', 'success');
+                form.reset();
+            } catch (error) {
+                showToast('Failed to subscribe. Please try again.', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Subscribe';
+            }
         });
     }
+}
 
-    // Contact form handling
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
+function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await handleFormSubmit(e.target, {
-                loadingText: 'Sending...',
-                successCallback: () => {
-                    alert('Thank you for your message. We\'ll get back to you soon!');
-                },
-                errorMessage: 'Failed to send message. Please try again.'
-            });
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            try {
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending...';
+
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                showToast('Message sent successfully!', 'success');
+                form.reset();
+            } catch (error) {
+                showToast('Failed to send message. Please try again.', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Message';
+            }
         });
     }
+}
 
-    // Payment form handling
-    const paymentForm = document.getElementById('payment-form');
-    if (paymentForm) {
-        paymentForm.addEventListener('submit', async (e) => {
+function setupPaymentForm() {
+    const form = document.getElementById('payment-form');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await handleFormSubmit(e.target, {
-                loadingText: 'Processing payment...',
-                successCallback: () => {
-                    window.location.href = '/success.html';
-                },
-                errorMessage: 'Payment failed. Please try again.'
-            });
+            const submitButton = form.querySelector('button[type="submit"]');
+
+            try {
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Processing...';
+
+                // Simulate payment processing
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Redirect to success page
+                window.location.href = 'success.html?email=' + encodeURIComponent(form.email.value);
+            } catch (error) {
+                showToast('Payment failed. Please try again.', 'error');
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Complete Purchase';
+            }
         });
     }
+}
 
-    // Dynamic copyright year
-    const copyrightYear = document.getElementById('copyright-year');
-    if (copyrightYear) {
-        copyrightYear.textContent = new Date().getFullYear();
-    }
+// Toast notification system
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg text-white ${
+        type === 'success' ? 'bg-green-500' : 'bg-red-500'
+    } transform transition-transform duration-300 translate-y-full`;
+    toast.textContent = message;
 
-    // Feature card hover effects
-    document.querySelectorAll('.feature-card').forEach(card => {
-        const icon = card.querySelector('.feature-icon');
-        if (icon) {
-            card.addEventListener('mouseenter', () => icon.classList.add('floating'));
-            card.addEventListener('mouseleave', () => icon.classList.remove('floating'));
-        }
+    document.body.appendChild(toast);
+
+    // Animate in
+    requestAnimationFrame(() => {
+        toast.style.transform = 'translateY(0)';
     });
 
-    // Initialize any page-specific scripts
-    const initPageSpecificScripts = () => {
-        // Payment page
-        const urlParams = new URLSearchParams(window.location.search);
-        const plan = urlParams.get('plan');
-        const billing = urlParams.get('billing');
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.style.transform = 'translateY(full)';
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 3000);
+}
 
-        if (plan && document.getElementById('selected-plan')) {
-            updatePlanDetails(plan, billing);
-        }
+// Update copyright year
+function updateCopyrightYear() {
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
 
-        // Success page
-        const userEmail = urlParams.get('email');
-        if (userEmail && document.getElementById('user-email')) {
-            document.getElementById('user-email').textContent = userEmail;
+// Handle URL parameters for dynamic content
+function handleURLParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email');
+
+    // Update success page email if present
+    const emailSpan = document.getElementById('user-email');
+    if (emailSpan && email) {
+        emailSpan.textContent = email;
+    }
+
+    // Handle subscription plan selection
+    const plan = urlParams.get('plan');
+    if (plan) {
+        const planInput = document.querySelector(`input[name="plan"][value="${plan}"]`);
+        if (planInput) {
+            planInput.checked = true;
+            updatePlanDetails(plan);
         }
+    }
+}
+
+// Update plan details on the payment page
+function updatePlanDetails(plan) {
+    const planDetails = {
+        free: { name: 'Free Plan', price: '$0/month' },
+        pro: { name: 'Pro Plan', price: '$9.99/month' },
+        premium: { name: 'Premium Plan', price: '$19.99/month' }
     };
 
-    initPageSpecificScripts();
-});
+    const selectedPlan = planDetails[plan] || planDetails.pro;
+    const planNameElement = document.getElementById('selected-plan-name');
+    const planPriceElement = document.getElementById('selected-plan-price');
 
-// Utility function to update plan details
-function updatePlanDetails(plan, billing) {
-    const prices = {
-        'Free': { monthly: 0, annual: 0 },
-        'Pro': { monthly: 9.99, annual: 99.99 },
-        'Premium': { monthly: 19.99, annual: 199.99 }
-    };
-
-    const selectedPlan = document.getElementById('selected-plan');
-    const billingCycle = document.getElementById('billing-cycle');
-    const planPrice = document.getElementById('plan-price');
-    const totalPrice = document.getElementById('total-price');
-
-    if (selectedPlan) selectedPlan.textContent = plan;
-    if (billingCycle) billingCycle.textContent = billing === 'annual' ? 'Annual' : 'Monthly';
-
-    const price = prices[plan]?.[billing] || prices['Pro'].monthly;
-    if (planPrice) planPrice.textContent = `$${price}${billing === 'annual' ? '/year' : '/month'}`;
-    if (totalPrice) totalPrice.textContent = `$${price}`;
+    if (planNameElement) planNameElement.textContent = selectedPlan.name;
+    if (planPriceElement) planPriceElement.textContent = selectedPlan.price;
 }
