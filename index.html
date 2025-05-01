@@ -3,393 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookIt - AI Cooking Revolution</title>
+    <title>CookIt - AI-Powered Cooking Assistant</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Three.js for 3D effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Add GSAP for smooth animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <!-- Add Particles.js for background effects -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100 overflow-x-hidden">
-    <!-- Particle Background -->
-    <div id="particles-js" class="fixed inset-0 z-0"></div>
-
-    <!-- 3D Background Canvas -->
-    <canvas id="bg-canvas" class="fixed inset-0 z-0"></canvas>
-
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-emerald-500 z-50 flex items-center justify-center">
-        <div class="text-center text-white">
-            <div class="loading-spinner mb-4"></div>
-            <div class="text-2xl">Preparing your cooking experience...</div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 bg-white/10 backdrop-blur-lg">
+<body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100">
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <div class="text-2xl font-bold gradient-text">CookIt</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="nav-link">Features</a>
-                    <a href="#demos" class="nav-link">Demos</a>
-                    <a href="#join" class="nav-link">Join</a>
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2">
+                        <span class="text-3xl">🍳</span>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">CookIt</span>
+                    </a>
                 </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="#download" class="download-btn">
+                        <i class="fas fa-download mr-2"></i>
+                        Download App
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-3">
+                <a href="#features" class="mobile-nav-link">Features</a>
+                <a href="#pricing" class="mobile-nav-link">Pricing</a>
+                <a href="about.html" class="mobile-nav-link">About</a>
+                <a href="blog.html" class="mobile-nav-link">Blog</a>
+                <a href="#download" class="mobile-download-btn">
+                    <i class="fas fa-download mr-2"></i>
+                    Download App
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="relative pt-16">
-        <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center px-4 relative">
-            <div class="text-center z-10">
-                <h1 class="mega-title text-8xl font-bold mb-6">CookIt</h1>
-                <p class="text-2xl text-emerald-700 mb-12 typing-text">Your AI-Powered Kitchen Assistant</p>
-                
-                <div class="flex flex-wrap justify-center gap-6">
-                    <button class="mega-button" onclick="showDemo('scanner')">
-                        Try Scanner
-                        <div class="button-glow"></div>
-                    </button>
-                    <button class="mega-button-secondary" onclick="showDemo('ar')">
-                        AR Demo
-                        <div class="button-glow"></div>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="py-20 px-4">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="section-title text-4xl font-bold text-center mb-16">Magical Features</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="mega-card" data-tilt>
-                        <div class="card-content">
-                            <div class="text-4xl mb-4">🔍</div>
-                            <h3 class="text-xl font-bold mb-2">Smart Scanner</h3>
-                            <p>Advanced AI recognizes ingredients instantly</p>
-                            <button class="card-button" onclick="showFeatureDemo('scanner')">Try Now</button>
-                        </div>
-                    </div>
-                    <div class="mega-card" data-tilt>
-                        <div class="card-content">
-                            <div class="text-4xl mb-4">🧪</div>
-                            <h3 class="text-xl font-bold mb-2">Recipe Generator</h3>
-                            <p>Get personalized recipes from your ingredients</p>
-                            <button class="card-button" onclick="showFeatureDemo('recipe')">Try Now</button>
-                        </div>
-                    </div>
-                    <div class="mega-card" data-tilt>
-                        <div class="card-content">
-                            <div class="text-4xl mb-4">👨‍🍳</div>
-                            <h3 class="text-xl font-bold mb-2">AR Cooking</h3>
-                            <p>Follow recipes with AR guidance</p>
-                            <button class="card-button" onclick="showFeatureDemo('ar')">Try Now</button>
-                        </div>
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
+                        Transform Your Kitchen with AI
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Experience the future of cooking with real-time ingredient recognition, 
+                        personalized recipes, and AR cooking guidance.
+                    </p>
+                    <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#download" class="app-store-btn">
+                            <i class="fab fa-apple mr-2"></i>
+                            App Store
+                        </a>
+                        <a href="#download" class="play-store-btn">
+                            <i class="fab fa-google-play mr-2"></i>
+                            Google Play
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Interactive Demos Section -->
-        <section id="demos" class="py-20 px-4 bg-white/20 backdrop-blur-md">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="section-title text-4xl font-bold text-center mb-16">Interactive Demos</h2>
-                
-                <!-- Demo Tabs -->
-                <div class="demo-tabs flex justify-center mb-8">
-                    <button class="demo-tab active" data-demo="scanner">Scanner</button>
-                    <button class="demo-tab" data-demo="recipe">Recipe</button>
-                    <button class="demo-tab" data-demo="ar">AR View</button>
-                </div>
-
-                <!-- Demo Containers -->
-                <div class="demo-containers relative">
-                    <!-- Scanner Demo -->
-                    <div id="scanner-demo" class="demo-container active">
-                        <div class="demo-phone">
-                            <div class="demo-screen">
-                                <div class="scan-area"></div>
-                                <div id="detected-ingredients"></div>
+                <div class="relative">
+                    <div class="phone-mockup">
+                        <div class="app-screen">
+                            <div class="screen-content">
+                                <!-- App interface preview -->
                             </div>
-                            <button class="demo-button" onclick="startScanning()">Start Scan</button>
-                        </div>
-                    </div>
-
-                    <!-- Recipe Demo -->
-                    <div id="recipe-demo" class="demo-container">
-                        <div class="recipe-generator">
-                            <div class="ingredients-list"></div>
-                            <div class="recipe-result"></div>
-                        </div>
-                    </div>
-
-                    <!-- AR Demo -->
-                    <div id="ar-demo" class="demo-container">
-                        <div class="ar-view">
-                            <div class="ar-overlay"></div>
-                            <div class="ar-instructions"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Join Section -->
-        <section id="join" class="py-20 px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="mega-form-container">
-                    <h2 class="section-title text-4xl font-bold mb-8">Join the Revolution</h2>
-                    <form class="join-form" onsubmit="handleJoin(event)">
-                        <div class="form-group">
-                            <input type="email" placeholder="Your email" class="mega-input" required>
-                            <button type="submit" class="mega-submit">
-                                Join Waitlist
-                                <div class="submit-particles"></div>
-                            </button>
-                        </div>
-                    </form>
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                Powerful Features for Modern Cooking
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera text-4xl text-emerald-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Smart Recognition</h3>
+                    <p class="text-gray-600">
+                        Point your camera at ingredients and let AI identify them instantly
+                    </p>
+                </div>
+                <!-- Add more feature cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                Choose Your Perfect Plan
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Free</h3>
+                        <div class="text-4xl font-bold mb-6">$0<span class="text-lg">/month</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Basic ingredient recognition</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>5 recipes per day</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Basic AR features</li>
+                        </ul>
+                        <button class="pricing-btn">Get Started</button>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Pro</h3>
+                        <div class="text-4xl font-bold mb-6">$9.99<span class="text-lg">/month</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Advanced ingredient recognition</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Unlimited recipes</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Full AR features</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Meal planning</li>
+                        </ul>
+                        <button class="pricing-btn-popular">Start Free Trial</button>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Premium</h3>
+                        <div class="text-4xl font-bold mb-6">$19.99<span class="text-lg">/month</span></div>
+                        <ul class="space-y-3 mb-6">
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Everything in Pro</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Priority support</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Custom recipes</li>
+                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Family sharing</li>
+                        </ul>
+                        <button class="pricing-btn">Choose Premium</button>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 px-4 bg-gradient-to-br from-emerald-600 to-green-500 text-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Download CookIt Today</h2>
+            <p class="text-xl mb-12">Join millions of happy cooks and transform your cooking experience</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#" class="download-badge">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                         alt="Download on App Store" class="h-12">
+                </a>
+                <a href="#" class="download-badge">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                         alt="Get it on Google Play" class="h-12">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+            <p class="text-gray-600 mb-8">Get the latest news and updates about CookIt</p>
+            <form class="newsletter-form">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="newsletter-input">
+                    <button type="submit" class="newsletter-btn">
+                        Subscribe
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CookIt</h3>
+                    <p class="text-gray-400">
+                        Transforming kitchens with AI technology and making cooking easier for everyone.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="careers.html" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="press.html" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 CookIt. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <style>
-        /* Add your previous styles here and these new ones: */
-
-        /* Mega Title Animation */
-        .mega-title {
-            background: linear-gradient(45deg, #059669, #10B981, #34D399);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 30px rgba(16, 185, 129, 0.3); }
-            50% { text-shadow: 0 0 50px rgba(16, 185, 129, 0.6); }
-        }
-
-        /* Typing Animation */
-        .typing-text {
-            border-right: 2px solid #10B981;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        /* Mega Cards */
-        .mega-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 24px;
-            padding: 2rem;
-            transform-style: preserve-3d;
-            transition: all 0.5s ease;
-        }
-
-        .mega-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 
-                0 20px 40px rgba(16, 185, 129, 0.2),
-                0 0 20px rgba(16, 185, 129, 0.3);
-        }
-
-        /* Demo Tabs */
-        .demo-tab {
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50px;
-            margin: 0 0.5rem;
+        /* Navigation Styles */
+        .nav-link {
+            color: #374151;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .demo-tab.active {
+        .nav-link:hover {
+            color: #059669;
+        }
+
+        .download-btn {
+            background: linear-gradient(to right, #059669, #10B981);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #10B981;
+        }
+
+        /* Pricing Cards */
+        .pricing-card {
+            background: white;
+            border-radius: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+        }
+
+        .pricing-card.popular {
+            border-color: #10B981;
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
             background: #10B981;
             color: white;
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
         }
 
-        /* Interactive Elements */
-        .demo-phone {
-            width: 300px;
-            height: 600px;
-            background: white;
-            border-radius: 40px;
-            padding: 20px;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .scan-area {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #10B981, transparent);
-            opacity: 0;
+        .pricing-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background: #F3F4F6;
+            color: #374151;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .scanning .scan-area {
-            opacity: 1;
-            animation: scanning 2s linear infinite;
-        }
-
-        @keyframes scanning {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100%); }
-        }
-
-        /* Particle Effects */
-        .submit-particles {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .submit-particles span {
-            position: absolute;
-            width: 4px;
-            height: 4px;
+        .pricing-btn-popular {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
             background: #10B981;
-            border-radius: 50%;
-            animation: particle-burst 1s ease-out forwards;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        @keyframes particle-burst {
-            0% { transform: translate(0, 0); opacity: 1; }
-            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+        /* Newsletter Form */
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #E5E7EB;
+            width: 100%;
+        }
+
+        .newsletter-btn {
+            background: #10B981;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        /* Social Links */
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #10B981;
+            transform: translateY(-2px);
         }
     </style>
 
     <script>
-        // Initialize Particles.js
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80 },
-                color: { value: '#10B981' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5 },
-                size: { value: 3 },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: true
-                }
-            }
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Loading Screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loading-screen').style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
-
-        // Demo Functionality
-        function showDemo(type) {
-            const demos = document.querySelectorAll('.demo-container');
-            const tabs = document.querySelectorAll('.demo-tab');
-            
-            demos.forEach(demo => demo.classList.remove('active'));
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            document.getElementById(`${type}-demo`).classList.add('active');
-            document.querySelector(`[data-demo="${type}"]`).classList.add('active');
-        }
-
-        // Scanner Demo
-        function startScanning() {
-            const screen = document.querySelector('.demo-screen');
-            screen.classList.add('scanning');
-            
-            setTimeout(() => {
-                screen.classList.remove('scanning');
-                showDetectedIngredients();
-            }, 2000);
-        }
-
-        function showDetectedIngredients() {
-            const ingredients = [
-                { name: 'Tomatoes', confidence: 98 },
-                { name: 'Onions', confidence: 96 },
-                { name: 'Bell Peppers', confidence: 95 }
-            ];
-
-            const container = document.getElementById('detected-ingredients');
-            container.innerHTML = '';
-
-            ingredients.forEach((ing, index) => {
-                setTimeout(() => {
-                    const div = document.createElement('div');
-                    div.className = 'ingredient-marker';
-                    div.innerHTML = `
-                        <span>${ing.name}</span>
-                        <span class="confidence">${ing.confidence}%</span>
-                    `;
-                    container.appendChild(div);
-                }, index * 500);
-            });
-        }
-
-        // Form Submission
-        function handleJoin(e) {
+        // Newsletter Form
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const button = e.target.querySelector('button');
-            createParticles(button);
-            button.textContent = 'Welcome Aboard! 🎉';
-            setTimeout(() => {
-                button.textContent = 'Join Waitlist';
-            }, 2000);
-        }
-
-        function createParticles(element) {
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('span');
-                particle.style.setProperty('--x', `${(Math.random() - 0.5) * 100}px`);
-                particle.style.setProperty('--y', `${(Math.random() - 0.5) * 100}px`);
-                element.querySelector('.submit-particles').appendChild(particle);
-                setTimeout(() => particle.remove(), 1000);
-            }
-        }
-
-        // 3D Background Effect
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({
-            canvas: document.getElementById('bg-canvas'),
-            alpha: true
+            const email = e.target.querySelector('input').value;
+            alert('Thank you for subscribing! We\'ll keep you updated.');
+            e.target.reset();
         });
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.position.z = 5;
-
-        const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-        const material = new THREE.MeshBasicMaterial({ color: 0x10B981, wireframe: true });
-        const torus = new THREE.Mesh(geometry, material);
-        scene.add(torus);
-
-        function animate() {
-            requestAnimationFrame(animate);
-            torus.rotation.x += 0.01;
-            torus.rotation.y += 0.005;
-            renderer.render(scene, camera);
-        }
-
-        animate();
+        // Pricing Toggle
+        document.querySelectorAll('.pricing-btn, .pricing-btn-popular').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.textContent.includes('Trial')) {
+                    window.location.href = '#download';
+                } else {
+                    window.location.href = 'signup.html';
+                }
+            });
+        });
     </script>
 </body>
 </html>
