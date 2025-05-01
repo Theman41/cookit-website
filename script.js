@@ -1,19 +1,24 @@
-// Intro Animation
+// Performance optimized script
 document.addEventListener('DOMContentLoaded', () => {
-    const intro = document.querySelector('.intro-animation');
-    if (intro) {
-        setTimeout(() => {
-            intro.style.display = 'none';
-        }, 3000);
-    }
-
-    // Initialize AOS
+    // Initialize AOS with optimized settings
     AOS.init({
-        duration: 1000,
-        once: true
+        duration: 800,
+        once: true,
+        disable: 'mobile' // Disable animations on mobile for better performance
     });
 
-    // Smooth Scroll
+    // Debounced scroll handler for better performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(() => {
+            // Handle scroll events
+        });
+    });
+
+    // Optimized smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -26,90 +31,153 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
-// Mobile Menu
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
+    // Mobile menu with improved touch response
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const body = document.body;
 
-if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        document.body.classList.toggle('overflow-hidden');
-    });
-}
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            body.classList.toggle('overflow-hidden');
+        });
 
-// Newsletter Form
-const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = e.target.querySelector('input[type="email"]').value;
-        
-        // Show loading state
-        const submitBtn = e.target.querySelector('button[type="submit"]');
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                body.classList.remove('overflow-hidden');
+            }
+        });
+    }
+
+    // Optimized form handling
+    const handleFormSubmit = async (form, options = {}) => {
+        const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
         
         try {
-            // Simulate API call
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (options.loadingText || 'Processing...');
+            
+            // Simulate API call with timeout
             await new Promise(resolve => setTimeout(resolve, 1500));
             
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'text-green-500 mt-2 text-sm';
-            successMessage.textContent = 'Thank you for subscribing! Check your email for confirmation.';
-            e.target.appendChild(successMessage);
+            if (options.successCallback) {
+                options.successCallback();
+            }
             
-            // Reset form
-            e.target.reset();
+            form.reset();
         } catch (error) {
-            console.error('Subscription error:', error);
+            console.error('Form submission error:', error);
+            alert(options.errorMessage || 'An error occurred. Please try again.');
         } finally {
             submitBtn.innerHTML = originalText;
         }
-    });
-}
+    };
 
-// Pricing Toggle
-const pricingButtons = document.querySelectorAll('.pricing-btn, .pricing-btn-popular');
-pricingButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const plan = btn.closest('.pricing-card').querySelector('h3').textContent;
-        const isAnnual = document.querySelector('#annual-pricing')?.checked;
-        
-        // Redirect to payment page with plan details
-        window.location.href = `/subscribe.html?plan=${encodeURIComponent(plan)}&billing=${isAnnual ? 'annual' : 'monthly'}`;
-    });
-});
+    // Newsletter form handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await handleFormSubmit(e.target, {
+                loadingText: 'Subscribing...',
+                successCallback: () => {
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'text-green-500 mt-2 text-sm';
+                    successMessage.textContent = 'Thank you for subscribing!';
+                    e.target.appendChild(successMessage);
+                    setTimeout(() => successMessage.remove(), 3000);
+                },
+                errorMessage: 'Failed to subscribe. Please try again.'
+            });
+        });
+    }
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await handleFormSubmit(e.target, {
+                loadingText: 'Sending...',
+                successCallback: () => {
+                    alert('Thank you for your message. We\'ll get back to you soon!');
+                },
+                errorMessage: 'Failed to send message. Please try again.'
+            });
+        });
+    }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate__animated', entry.target.dataset.animation);
-            observer.unobserve(entry.target);
+    // Payment form handling
+    const paymentForm = document.getElementById('payment-form');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await handleFormSubmit(e.target, {
+                loadingText: 'Processing payment...',
+                successCallback: () => {
+                    window.location.href = '/success.html';
+                },
+                errorMessage: 'Payment failed. Please try again.'
+            });
+        });
+    }
+
+    // Dynamic copyright year
+    const copyrightYear = document.getElementById('copyright-year');
+    if (copyrightYear) {
+        copyrightYear.textContent = new Date().getFullYear();
+    }
+
+    // Feature card hover effects
+    document.querySelectorAll('.feature-card').forEach(card => {
+        const icon = card.querySelector('.feature-icon');
+        if (icon) {
+            card.addEventListener('mouseenter', () => icon.classList.add('floating'));
+            card.addEventListener('mouseleave', () => icon.classList.remove('floating'));
         }
     });
-}, observerOptions);
 
-document.querySelectorAll('[data-animation]').forEach(el => observer.observe(el));
+    // Initialize any page-specific scripts
+    const initPageSpecificScripts = () => {
+        // Payment page
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        const billing = urlParams.get('billing');
 
-// Dynamic copyright year
-document.querySelector('#copyright-year').textContent = new Date().getFullYear();
+        if (plan && document.getElementById('selected-plan')) {
+            updatePlanDetails(plan, billing);
+        }
 
-// Feature hover effects
-document.querySelectorAll('.feature-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.querySelector('.feature-icon').classList.add('floating');
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.querySelector('.feature-icon').classList.remove('floating');
-    });
+        // Success page
+        const userEmail = urlParams.get('email');
+        if (userEmail && document.getElementById('user-email')) {
+            document.getElementById('user-email').textContent = userEmail;
+        }
+    };
+
+    initPageSpecificScripts();
 });
+
+// Utility function to update plan details
+function updatePlanDetails(plan, billing) {
+    const prices = {
+        'Free': { monthly: 0, annual: 0 },
+        'Pro': { monthly: 9.99, annual: 99.99 },
+        'Premium': { monthly: 19.99, annual: 199.99 }
+    };
+
+    const selectedPlan = document.getElementById('selected-plan');
+    const billingCycle = document.getElementById('billing-cycle');
+    const planPrice = document.getElementById('plan-price');
+    const totalPrice = document.getElementById('total-price');
+
+    if (selectedPlan) selectedPlan.textContent = plan;
+    if (billingCycle) billingCycle.textContent = billing === 'annual' ? 'Annual' : 'Monthly';
+
+    const price = prices[plan]?.[billing] || prices['Pro'].monthly;
+    if (planPrice) planPrice.textContent = `$${price}${billing === 'annual' ? '/year' : '/month'}`;
+    if (totalPrice) totalPrice.textContent = `$${price}`;
+}
