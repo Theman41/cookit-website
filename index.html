@@ -3,166 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookIt - AI-Powered Cooking Assistant</title>
+    <title>CookIt - AI-Powered Cooking Magic</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="demo.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <img src="chef-hat-logo.png" alt="CookIt Logo" class="logo">
-                    <span class="text-2xl font-bold text-black">CookIt</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#features" class="nav-link">Features</a>
-                        <a href="#how-it-works" class="nav-link">How It Works</a>
-                        <a href="#demo" class="nav-link">Demo</a>
-                        <a href="#waitlist" class="magic-button">Join Waitlist</a>
-                    </div>
-                </div>
-            </div>
+    <!-- Initial Hero Animation -->
+    <section class="min-h-screen flex flex-col items-center justify-center relative bg-gradient-to-b from-green-50 to-green-100">
+        <div class="hero-logo text-center">
+            <img src="chef-hat-logo.png" alt="CookIt Logo" class="big-logo mx-auto">
+            <h1 class="text-6xl md:text-8xl font-bold text-green-600 mb-4">CookIt</h1>
+            <p class="text-xl md:text-2xl text-green-700 mb-8">Your AI Cooking Companion</p>
         </div>
-    </nav>
-
-    <!-- Hero Section with Video -->
-    <section class="hero-section min-h-screen flex items-center relative bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <div class="text-center mb-12">
-                <h1 class="text-5xl md:text-7xl font-bold mb-8 text-black">
-                    Transform Your Kitchen with AI
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-                    Experience the future of cooking with real-time ingredient recognition,
-                    AI-powered recipe generation, and immersive AR guidance.
-                </p>
-                <div class="flex justify-center gap-4">
-                    <button class="magic-button">Get Early Access</button>
-                    <button class="magic-button" onclick="playDemo()">Watch Demo</button>
-                </div>
-            </div>
-            
-            <!-- Video Container -->
-            <div class="video-container mt-12">
-                <video id="demo-video" controls poster="video-thumbnail.jpg">
-                    <source src="demo-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+        
+        <div class="scroll-indicator text-green-600">
+            <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title">How CookIt Works</h2>
-            <p class="section-subtitle">Three simple steps to transform your cooking experience</p>
+    <!-- Features Overview -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="section-title">Cooking Made Magical</h2>
+            <p class="section-subtitle">Experience the future of cooking with AI-powered assistance</p>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="text-xl font-bold mb-4">Scan Ingredients</h3>
-                    <p>Simply point your camera at your ingredients, and our AI will identify them instantly.</p>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">📸</div>
+                    <h3 class="text-xl font-bold mb-4">Snap & Recognize</h3>
+                    <p class="text-gray-600">Point your camera at ingredients and watch as our AI instantly identifies them!</p>
                 </div>
-                <div class="feature-card">
+                
+                <div class="feature-card text-center">
                     <div class="feature-icon">🧪</div>
-                    <h3 class="text-xl font-bold mb-4">Get Recipe Suggestions</h3>
-                    <p>Receive personalized recipe suggestions based on your available ingredients.</p>
+                    <h3 class="text-xl font-bold mb-4">Smart Recipes</h3>
+                    <p class="text-gray-600">Get personalized recipe suggestions based on your available ingredients</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👨‍🍳</div>
-                    <h3 class="text-xl font-bold mb-4">Follow AR Instructions</h3>
-                    <p>Get step-by-step cooking guidance with our augmented reality features.</p>
+                
+                <div class="feature-card text-center">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="text-xl font-bold mb-4">AR Cooking Guide</h3>
+                    <p class="text-gray-600">Follow step-by-step instructions in augmented reality</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Grid -->
-    <section id="features" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="section-title">Amazing Features</h2>
-            <p class="section-subtitle">Discover what makes CookIt special</p>
+    <!-- Interactive Demo -->
+    <section class="py-20 bg-green-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Watch how CookIt transforms your cooking experience</p>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="text-xl font-bold mb-4">Smart Recognition</h3>
-                    <p>Advanced AI that can identify multiple ingredients simultaneously with high accuracy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3 class="text-xl font-bold mb-4">Recipe Database</h3>
-                    <p>Access to thousands of recipes that are constantly updated and refined.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="text-xl font-bold mb-4">Personalization</h3>
-                    <p>Learn your preferences and dietary restrictions to suggest the perfect recipes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3 class="text-xl font-bold mb-4">AR Guidance</h3>
-                    <p>Step-by-step cooking instructions in augmented reality for an immersive experience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3 class="text-xl font-bold mb-4">Real-time Adjustments</h3>
-                    <p>Modify recipes on the fly based on available ingredients or serving size.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💾</div>
-                    <h3 class="text-xl font-bold mb-4">Save & Share</h3>
-                    <p>Save your favorite recipes and share them with friends and family.</p>
+            <div class="mt-12 bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="aspect-w-16 aspect-h-9">
+                    <!-- Replace with your demo video or interactive demo -->
+                    <div class="bg-green-100 p-8 text-center">
+                        <h3 class="text-2xl font-bold text-green-600 mb-4">Interactive Demo Coming Soon!</h3>
+                        <p class="text-green-700">Experience the magic of CookIt in action</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Demo Section -->
-    [Previous demo section code remains the same]
-
-    <!-- Waitlist Section -->
-    <section id="waitlist" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="magic-card p-8 text-center bg-white">
-                <h2 class="text-4xl font-bold mb-8">Join the Future of Cooking</h2>
-                <p class="text-xl text-gray-600 mb-8">
-                    Be among the first to experience CookIt and transform your cooking journey.
-                </p>
-                <form class="max-w-md mx-auto" id="waitlist-form">
-                    <div class="flex gap-4">
-                        <input type="email" 
-                               placeholder="Enter your email" 
-                               class="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:border-black focus:ring-2 focus:ring-black focus:outline-none">
-                        <button type="submit" class="magic-button">
-                            Join Waitlist
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-b from-green-500 to-green-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">Ready to Transform Your Cooking?</h2>
+            <p class="text-xl mb-12">Join our waitlist and be the first to experience the future of cooking</p>
+            
+            <form class="max-w-md mx-auto">
+                <div class="flex gap-4">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="flex-1 px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-300">
+                    <button type="submit" class="fun-button">
+                        Join Waitlist
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="flex items-center justify-center mb-4">
-                    <img src="chef-hat-logo.png" alt="CookIt Logo" class="logo">
-                    <span class="text-2xl font-bold text-black">CookIt</span>
-                </div>
-                <p class="text-gray-600">© 2024 CookIt. All rights reserved.</p>
+    <footer class="py-12 bg-green-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center mb-6">
+                <img src="chef-hat-logo.png" alt="CookIt Logo" class="w-12 h-12">
+                <span class="text-2xl font-bold ml-2">CookIt</span>
             </div>
+            <p class="text-green-200">© 2024 CookIt. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="main.js"></script>
-    <script src="demo.js"></script>
+    <script>
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-card').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
