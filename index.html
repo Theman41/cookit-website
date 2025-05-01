@@ -4,53 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CookIt - AI-Powered Cooking Assistant</title>
+    <meta name="description" content="Transform your kitchen with AI-powered cooking assistance, real-time ingredient recognition, and AR cooking guidance.">
+    
+    <!-- Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100">
-    <!-- Navigation Bar -->
+    <!-- Impressive Intro Animation -->
+    <div class="intro-animation fixed inset-0 z-[60] flex items-center justify-center bg-gradient-to-br from-emerald-600 to-green-500">
+        <div class="text-center" data-animation="zoomIn">
+            <div class="mb-8">
+                <span class="text-9xl mb-6 block animate-bounce">🍳</span>
+                <h1 class="text-8xl font-bold text-white mb-4 tracking-tight">CookIt</h1>
+                <p class="text-2xl text-white/90">Your AI Kitchen Assistant</p>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <div class="w-3 h-3 bg-white rounded-full animate-ping"></div>
+                <div class="w-3 h-3 bg-white rounded-full animate-ping delay-100"></div>
+                <div class="w-3 h-3 bg-white rounded-full animate-ping delay-200"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="/" class="flex items-center space-x-2">
-                        <span class="text-3xl">🍳</span>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">CookIt</span>
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <span class="text-3xl group-hover:rotate-12 transition-transform">🍳</span>
+                        <span class="text-2xl font-bold gradient-text">CookIt</span>
                     </a>
                 </div>
 
-                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#features" class="nav-link">Features</a>
                     <a href="#pricing" class="nav-link">Pricing</a>
                     <a href="about.html" class="nav-link">About</a>
                     <a href="blog.html" class="nav-link">Blog</a>
-                    <a href="#download" class="download-btn">
+                    <a href="#download" class="btn-primary">
                         <i class="fas fa-download mr-2"></i>
                         Download App
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-600">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+                <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-4 py-2 space-y-3">
-                <a href="#features" class="mobile-nav-link">Features</a>
-                <a href="#pricing" class="mobile-nav-link">Pricing</a>
-                <a href="about.html" class="mobile-nav-link">About</a>
-                <a href="blog.html" class="mobile-nav-link">Blog</a>
-                <a href="#download" class="mobile-download-btn">
+                <a href="#features" class="block py-2 text-gray-600 hover:text-emerald-600">Features</a>
+                <a href="#pricing" class="block py-2 text-gray-600 hover:text-emerald-600">Pricing</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-emerald-600">About</a>
+                <a href="blog.html" class="block py-2 text-gray-600 hover:text-emerald-600">Blog</a>
+                <a href="#download" class="btn-primary block text-center">
                     <i class="fas fa-download mr-2"></i>
                     Download App
                 </a>
@@ -59,11 +74,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-12 px-4">
-        <div class="max-w-7xl mx-auto">
+    <section class="min-h-screen pt-24 pb-12 px-4 hero-bg relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-center md:text-left">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-green-500 bg-clip-text text-transparent">
+                <div class="text-center md:text-left" data-aos="fade-right">
+                    <h1 class="text-6xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
                         Transform Your Kitchen with AI
                     </h1>
                     <p class="text-xl text-gray-600 mb-8">
@@ -71,99 +86,182 @@
                         personalized recipes, and AR cooking guidance.
                     </p>
                     <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-                        <a href="#download" class="app-store-btn">
-                            <i class="fab fa-apple mr-2"></i>
+                        <a href="#download" class="btn-primary group">
+                            <i class="fab fa-apple mr-2 group-hover:rotate-12 transition-transform"></i>
                             App Store
                         </a>
-                        <a href="#download" class="play-store-btn">
-                            <i class="fab fa-google-play mr-2"></i>
+                        <a href="#download" class="btn-primary group">
+                            <i class="fab fa-google-play mr-2 group-hover:rotate-12 transition-transform"></i>
                             Google Play
                         </a>
                     </div>
+                    <div class="mt-8 flex gap-4 justify-center md:justify-start">
+                        <div class="flex items-center">
+                            <div class="flex -space-x-2">
+                                <img src="https://i.pravatar.cc/40?img=1" class="w-8 h-8 rounded-full border-2 border-white" alt="User">
+                                <img src="https://i.pravatar.cc/40?img=2" class="w-8 h-8 rounded-full border-2 border-white" alt="User">
+                                <img src="https://i.pravatar.cc/40?img=3" class="w-8 h-8 rounded-full border-2 border-white" alt="User">
+                            </div>
+                            <span class="ml-4 text-sm text-gray-600">Join 100,000+ happy cooks</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="relative">
+                <div class="relative" data-aos="fade-left">
                     <div class="phone-mockup">
-                        <div class="app-screen">
-                            <div class="screen-content">
-                                <!-- App interface preview -->
+                        <div class="relative w-[300px] h-[600px] mx-auto">
+                            <img src="https://i.imgur.com/XJxqvsU.png" alt="Phone Frame" class="w-full h-full object-contain">
+                            <div class="absolute inset-[3%] rounded-[2rem] overflow-hidden bg-black">
+                                <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                                    <source src="app-demo.mp4" type="video/mp4">
+                                </video>
                             </div>
                         </div>
                     </div>
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-green-500/10 rounded-full animate-pulse"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-emerald-500/10 rounded-full animate-pulse delay-300"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 px-4 bg-white">
+    <section id="features" class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">
                 Powerful Features for Modern Cooking
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-camera text-4xl text-emerald-500"></i>
+                <div class="feature-card glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon text-4xl text-emerald-500 mb-4">
+                        <i class="fas fa-camera"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4">Smart Recognition</h3>
                     <p class="text-gray-600">
-                        Point your camera at ingredients and let AI identify them instantly
+                        Point your camera at ingredients and let AI identify them instantly with high accuracy.
                     </p>
                 </div>
-                <!-- Add more feature cards -->
+                
+                <div class="feature-card glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon text-4xl text-emerald-500 mb-4">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AI Recipe Generation</h3>
+                    <p class="text-gray-600">
+                        Get personalized recipe suggestions based on your available ingredients and preferences.
+                    </p>
+                </div>
+                
+                <div class="feature-card glass-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon text-4xl text-emerald-500 mb-4">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AR Cooking Guide</h3>
+                    <p class="text-gray-600">
+                        Follow step-by-step cooking instructions with augmented reality overlays.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 px-4">
+    <section id="pricing" class="py-20 px-4 bg-white/50">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">
                 Choose Your Perfect Plan
             </h2>
+            
+            <div class="flex justify-center mb-8">
+                <div class="flex items-center space-x-4 bg-gray-100 p-1 rounded-full">
+                    <button class="px-6 py-2 rounded-full bg-white shadow-md text-emerald-600 font-medium">Monthly</button>
+                    <button class="px-6 py-2 rounded-full text-gray-600 font-medium">Annual</button>
+                </div>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Free Plan -->
-                <div class="pricing-card">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Free</h3>
-                        <div class="text-4xl font-bold mb-6">$0<span class="text-lg">/month</span></div>
-                        <ul class="space-y-3 mb-6">
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Basic ingredient recognition</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>5 recipes per day</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Basic AR features</li>
+                <div class="pricing-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">Free</h3>
+                        <div class="text-4xl font-bold mb-6">$0<span class="text-lg text-gray-500">/month</span></div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Basic ingredient recognition
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                5 recipes per day
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Basic AR features
+                            </li>
                         </ul>
-                        <button class="pricing-btn">Get Started</button>
+                        <button class="w-full py-3 px-6 rounded-xl bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors">
+                            Get Started
+                        </button>
                     </div>
                 </div>
 
                 <!-- Pro Plan -->
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Pro</h3>
-                        <div class="text-4xl font-bold mb-6">$9.99<span class="text-lg">/month</span></div>
-                        <ul class="space-y-3 mb-6">
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Advanced ingredient recognition</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Unlimited recipes</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Full AR features</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Meal planning</li>
+                <div class="pricing-card glass-card rounded-2xl overflow-hidden popular transform scale-105" data-aos="fade-up">
+                    <div class="bg-gradient-to-r from-emerald-600 to-green-500 text-white text-center py-2 text-sm font-medium">
+                        Most Popular
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">Pro</h3>
+                        <div class="text-4xl font-bold mb-6">$9.99<span class="text-lg text-gray-500">/month</span></div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Advanced ingredient recognition
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Unlimited recipes
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Full AR features
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Meal planning
+                            </li>
                         </ul>
-                        <button class="pricing-btn-popular">Start Free Trial</button>
+                        <button class="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-emerald-600 to-green-500 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/20 transition-all">
+                            Start Free Trial
+                        </button>
                     </div>
                 </div>
 
                 <!-- Premium Plan -->
-                <div class="pricing-card">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4">Premium</h3>
-                        <div class="text-4xl font-bold mb-6">$19.99<span class="text-lg">/month</span></div>
-                        <ul class="space-y-3 mb-6">
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Everything in Pro</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Priority support</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Custom recipes</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i>Family sharing</li>
+                <div class="pricing-card glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">Premium</h3>
+                        <div class="text-4xl font-bold mb-6">$19.99<span class="text-lg text-gray-500">/month</span></div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Everything in Pro
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Priority support
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Custom recipes
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-emerald-500 mr-3"></i>
+                                Family sharing
+                            </li>
                         </ul>
-                        <button class="pricing-btn">Choose Premium</button>
+                        <button class="w-full py-3 px-6 rounded-xl bg-gray-800 text-white font-medium hover:bg-gray-900 transition-colors">
+                            Choose Premium
+                        </button>
                     </div>
                 </div>
             </div>
@@ -171,34 +269,39 @@
     </section>
 
     <!-- Download Section -->
-    <section id="download" class="py-20 px-4 bg-gradient-to-br from-emerald-600 to-green-500 text-white">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Download CookIt Today</h2>
-            <p class="text-xl mb-12">Join millions of happy cooks and transform your cooking experience</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#" class="download-badge">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                         alt="Download on App Store" class="h-12">
-                </a>
-                <a href="#" class="download-badge">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                         alt="Get it on Google Play" class="h-12">
-                </a>
+    <section id="download" class="py-20 px-4 bg-gradient-to-br from-emerald-600 to-green-500 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Download CookIt Today</h2>
+                <p class="text-xl mb-12 text-white/90">Join millions of happy cooks and transform your cooking experience</p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="#" class="download-badge hover:scale-105 transition-transform">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                             alt="Download on App Store" class="h-16">
+                    </a>
+                    <a href="#" class="download-badge hover:scale-105 transition-transform">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                             alt="Get it on Google Play" class="h-16">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Newsletter Section -->
-    <section class="py-20 px-4 bg-white">
+    <section class="py-20 px-4 bg-white/50">
         <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
-            <p class="text-gray-600 mb-8">Get the latest news and updates about CookIt</p>
-            <form class="newsletter-form">
+            <h2 class="text-3xl font-bold mb-6 gradient-text" data-aos="fade-up">Stay Updated</h2>
+            <p class="text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+                Get the latest news and updates about CookIt
+            </p>
+            <form class="newsletter-form" data-aos="fade-up" data-aos-delay="200">
                 <div class="flex flex-col md:flex-row gap-4">
                     <input type="email" 
                            placeholder="Enter your email" 
-                           class="newsletter-input">
-                    <button type="submit" class="newsletter-btn">
+                           class="flex-1 px-6 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-emerald-500">
+                    <button type="submit" class="btn-primary whitespace-nowrap">
                         Subscribe
                         <i class="fas fa-arrow-right ml-2"></i>
                     </button>
@@ -220,19 +323,19 @@
                 <div>
                     <h4 class="text-lg font-bold mb-4">Company</h4>
                     <ul class="space-y-2">
-                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li><a href="careers.html" class="text-gray-400 hover:text-white">Careers</a></li>
-                        <li><a href="press.html" class="text-gray-400 hover:text-white">Press</a></li>
-                        <li><a href="blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="careers.html" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="press.html" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-bold mb-4">Support</h4>
                     <ul class="space-y-2">
-                        <li><a href="help.html" class="text-gray-400 hover:text-white">Help Center</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
-                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="help.html" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div>
@@ -246,162 +349,13 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 CookIt. All rights reserved.</p>
+                <p>&copy; <span id="copyright-year"></span> CookIt. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <style>
-        /* Navigation Styles */
-        .nav-link {
-            color: #374151;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #059669;
-        }
-
-        .download-btn {
-            background: linear-gradient(to right, #059669, #10B981);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
-        }
-
-        /* Feature Cards */
-        .feature-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #E5E7EB;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: #10B981;
-        }
-
-        /* Pricing Cards */
-        .pricing-card {
-            background: white;
-            border-radius: 1rem;
-            position: relative;
-            transition: all 0.3s ease;
-            border: 1px solid #E5E7EB;
-        }
-
-        .pricing-card.popular {
-            border-color: #10B981;
-            transform: scale(1.05);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #10B981;
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .pricing-btn {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            background: #F3F4F6;
-            color: #374151;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-btn-popular {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            background: #10B981;
-            color: white;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        /* Newsletter Form */
-        .newsletter-input {
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            border: 1px solid #E5E7EB;
-            width: 100%;
-        }
-
-        .newsletter-btn {
-            background: #10B981;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        /* Social Links */
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: #10B981;
-            transform: translateY(-2px);
-        }
-    </style>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Newsletter Form
-        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            alert('Thank you for subscribing! We\'ll keep you updated.');
-            e.target.reset();
-        });
-
-        // Pricing Toggle
-        document.querySelectorAll('.pricing-btn, .pricing-btn-popular').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (btn.textContent.includes('Trial')) {
-                    window.location.href = '#download';
-                } else {
-                    window.location.href = 'signup.html';
-                }
-            });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
