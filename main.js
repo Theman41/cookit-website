@@ -98,3 +98,49 @@ document.querySelector('form').addEventListener('submit', (e) => {
         }, 2000);
     }, 1500);
 });
+// Video player functionality
+function playDemo() {
+    const video = document.getElementById('demo-video');
+    video.scrollIntoView({ behavior: 'smooth' });
+    video.play();
+}
+
+// Waitlist form handling
+document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input[type="email"]').value;
+    const button = this.querySelector('button');
+    const originalText = button.textContent;
+    
+    // Show loading state
+    button.textContent = 'Joining...';
+    
+    // Simulate API call
+    setTimeout(() => {
+        button.textContent = 'Welcome Aboard! 🎉';
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 2000);
+    }, 1500);
+});
+
+// Feature card animations
+document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+    });
+});
+
+// Smooth scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
