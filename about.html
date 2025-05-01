@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CookIt</title>
+    <meta name="description" content="Learn about CookIt's mission to transform cooking with AI technology and meet our passionate team.">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <span class="text-3xl group-hover:rotate-12 transition-transform">🍳</span>
+                        <span class="text-2xl font-bold gradient-text">CookIt</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#pricing" class="nav-link">Pricing</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <a href="/#download" class="btn-primary">
+                        <i class="fas fa-download mr-2"></i>
+                        Download App
+                    </a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-3">
+                <a href="/#features" class="block py-2 text-gray-600 hover:text-emerald-600">Features</a>
+                <a href="/#pricing" class="block py-2 text-gray-600 hover:text-emerald-600">Pricing</a>
+                <a href="/about.html" class="block py-2 text-gray-600 hover:text-emerald-600">About</a>
+                <a href="/blog.html" class="block py-2 text-gray-600 hover:text-emerald-600">Blog</a>
+                <a href="/#download" class="btn-primary block text-center">
+                    <i class="fas fa-download mr-2"></i>
+                    Download App
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f')] bg-cover bg-center opacity-5"></div>
+        <div class="max-w-7xl mx-auto relative">
+            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">Our Story</h1>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Founded in 2023, CookIt emerged from a simple yet powerful idea: 
+                    to make cooking accessible, enjoyable, and innovative for everyone. 
+                    Our journey began when our founders, passionate about both technology and culinary arts, 
+                    recognized the potential of AI to revolutionize the way we cook.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 px-4 bg-white/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-6 gradient-text">Our Mission</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        At CookIt, we're on a mission to transform every kitchen into a smart cooking space. 
+                        We believe that everyone deserves access to the joy of cooking, regardless of their experience level.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Through innovative AI technology and augmented reality, we're breaking down the barriers 
+                        that make cooking seem intimidating, while preserving the creativity and passion that 
+                        makes it an art.
+                    </p>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f" 
+                         alt="Modern Kitchen" 
+                         class="rounded-2xl shadow-xl">
+                    <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-green-500/20 rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Our Values</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl text-emerald-500 mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Innovation</h3>
+                    <p class="text-gray-600">
+                        We constantly push the boundaries of what's possible in the kitchen, 
+                        leveraging cutting-edge AI and AR technology to create new possibilities.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl text-emerald-500 mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Community</h3>
+                    <p class="text-gray-600">
+                        We believe in the power of community and sharing. Our platform connects 
+                        cooks worldwide, fostering a supportive environment for learning and growth.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl text-emerald-500 mb-4">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Sustainability</h3>
+                    <p class="text-gray-600">
+                        We're committed to promoting sustainable cooking practices and helping users 
+                        reduce food waste through smart ingredient management.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 px-4 bg-white/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">Meet Our Team</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Founder & CEO -->
+                <div class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.pravatar.cc/400?img=11" alt="Sarah Chen" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sarah Chen</h3>
+                        <p class="text-emerald-600 mb-4">Founder & CEO</p>
+                        <p class="text-gray-600 mb-4">
+                            Former tech executive with a passion for cooking. Sarah combines her love 
+                            for technology and food to lead CookIt's innovation.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-emerald-600 transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-emerald-600 transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTO -->
+                <div class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://i.pravatar.cc/400?img=12" alt="Marcus Thompson" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Marcus Thompson</h3>
+                        <p class="text-emerald-600 mb-4">Chief Technology Officer</p>
+                        <p class="text-gray-600 mb-4">
+                            AI expert with over 15 years of experience. Marcus leads our technical 
+                            innovation and AI development.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-emerald-600 transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-emerald-600 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Head Chef -->
+                <div class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://i.pravatar.cc/400?img=13" alt="Isabella Martinez" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Isabella Martinez</h3>
+                        <p class="text-emerald-600 mb-4">Head of Culinary Innovation</p>
+                        <p class="text-gray-600 mb-4">
+                            Michelin-starred chef turned tech innovator. Isabella ensures our AI 
+                            understands the art of cooking.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-emerald-600 transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-emerald-600 transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="py-20 px-4 bg-gradient-to-br from-emerald-600 to-green-500 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="max-w-3xl mx-auto relative text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-6">Join Our Journey</h2>
+            <p class="text-xl mb-8 text-white/90">
+                We're always looking for passionate individuals to join our team and help 
+                revolutionize the future of cooking.
+            </p>
+            <a href="/careers.html" class="inline-block bg-white text-emerald-600 px-8 py-3 rounded-xl font-medium hover:shadow-lg hover:shadow-white/20 transition-all">
+                View Open Positions
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CookIt</h3>
+                    <p class="text-gray-400">
+                        Transforming kitchens with AI technology and making cooking easier for everyone.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="careers.html" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="press.html" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="copyright-year"></span> CookIt. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
