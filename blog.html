@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - CookIt</title>
+    <meta name="description" content="Stay updated with the latest cooking tips, app features, and culinary innovations from CookIt.">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-['Poppins'] bg-gradient-to-br from-emerald-50 to-green-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <span class="text-3xl group-hover:rotate-12 transition-transform">🍳</span>
+                        <span class="text-2xl font-bold gradient-text">CookIt</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#features" class="nav-link">Features</a>
+                    <a href="/#pricing" class="nav-link">Pricing</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <a href="/#download" class="btn-primary">
+                        <i class="fas fa-download mr-2"></i>
+                        Download App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 gradient-text" data-aos="fade-up">
+                CookIt Blog
+            </h1>
+            <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Discover the latest cooking tips, app features, and culinary innovations. 
+                Stay updated with CookIt's journey in revolutionizing home cooking.
+            </p>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-card overflow-hidden rounded-2xl" data-aos="fade-up">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="relative h-96 md:h-auto">
+                        <img src="https://images.unsplash.com/photo-1505935428862-770b6f24f629" 
+                             alt="AI in Cooking" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:p-12">
+                        <span class="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-600 text-sm font-medium mb-4">
+                            Featured
+                        </span>
+                        <h2 class="text-3xl font-bold mb-4">How AI is Revolutionizing Home Cooking</h2>
+                        <p class="text-gray-600 mb-6">
+                            Discover how artificial intelligence is transforming the way we cook at home. 
+                            From ingredient recognition to personalized recipe recommendations, learn how 
+                            CookIt is leading the culinary tech revolution.
+                        </p>
+                        <div class="flex items-center mb-6">
+                            <img src="https://i.pravatar.cc/40?img=1" 
+                                 alt="Author" 
+                                 class="w-10 h-10 rounded-full mr-4">
+                            <div>
+                                <p class="font-medium">Sarah Chen</p>
+                                <p class="text-sm text-gray-500">May 15, 2024 • 8 min read</p>
+                            </div>
+                        </div>
+                        <a href="/blog/ai-revolution-cooking.html" 
+                           class="inline-flex items-center text-emerald-600 hover:text-emerald-700">
+                            Read More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12">Latest Posts</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <article class="glass-card rounded-xl overflow-hidden" data-aos="fade-up">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" 
+                             alt="Healthy Recipes" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-600 text-sm font-medium mb-4">
+                            Recipes
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">10 Healthy Recipes You Can Make in 15 Minutes</h3>
+                        <p class="text-gray-600 mb-4">
+                            Quick and nutritious meals perfect for busy professionals. 
+                            Let CookIt guide you through these simple yet delicious recipes.
+                        </p>
+                        <a href="/blog/quick-healthy-recipes.html" 
+                           class="text-emerald-600 hover:text-emerald-700">
+                            Read More →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620" 
+                             alt="AR Cooking" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-600 text-sm font-medium mb-4">
+                            Technology
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">Introducing AR Cooking Assistance</h3>
+                        <p class="text-gray-600 mb-4">
+                            Experience step-by-step cooking guidance with augmented reality. 
+                            See how CookIt's AR feature transforms your kitchen experience.
+                        </p>
+                        <a href="/blog/ar-cooking-assistance.html" 
+                           class="text-emerald-600 hover:text-emerald-700">
+                            Read More →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="glass-card rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488" 
+                             alt="Community Stories" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-600 text-sm font-medium mb-4">
+                            Community
+                        </span>
+                        <h3 class="text-xl font-bold mb-3">Community Stories: From Novice to Chef</h3>
+                        <p class="text-gray-600 mb-4">
+                            Meet Sarah, who transformed her cooking skills using CookIt. 
+                            Read her inspiring journey and tips for aspiring home chefs.
+                        </p>
+                        <a href="/blog/community-stories-sarah.html" 
+                           class="text-emerald-600 hover:text-emerald-700">
+                            Read More →
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-20 px-4 bg-white/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12">Browse by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="/blog/category/recipes.html" 
+                   class="glass-card p-6 rounded-xl text-center hover:shadow-lg transition-shadow"
+                   data-aos="fade-up">
+                    <i class="fas fa-utensils text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="font-bold">Recipes</h3>
+                    <p class="text-gray-600 text-sm">Quick & easy meals</p>
+                </a>
+
+                <a href="/blog/category/technology.html" 
+                   class="glass-card p-6 rounded-xl text-center hover:shadow-lg transition-shadow"
+                   data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-microchip text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="font-bold">Technology</h3>
+                    <p class="text-gray-600 text-sm">AI & AR features</p>
+                </a>
+
+                <a href="/blog/category/tips.html" 
+                   class="glass-card p-6 rounded-xl text-center hover:shadow-lg transition-shadow"
+                   data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-lightbulb text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="font-bold">Cooking Tips</h3>
+                    <p class="text-gray-600 text-sm">Pro techniques</p>
+                </a>
+
+                <a href="/blog/category/community.html" 
+                   class="glass-card p-6 rounded-xl text-center hover:shadow-lg transition-shadow"
+                   data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-users text-4xl text-emerald-500 mb-4"></i>
+                    <h3 class="font-bold">Community</h3>
+                    <p class="text-gray-600 text-sm">Success stories</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="glass-card p-8 md:p-12 rounded-2xl" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+                <p class="text-gray-600 mb-8">
+                    Subscribe to our newsletter for the latest cooking tips, recipes, and app updates.
+                </p>
+                <form class="flex flex-col md:flex-row gap-4">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="flex-1 px-6 py-4 rounded-xl border border-gray-300 focus:border-emerald-500 focus:ring focus:ring-emerald-200 transition-all">
+                    <button type="submit" 
+                            class="bg-gradient-to-r from-emerald-600 to-green-500 text-white px-8 py-4 rounded-xl font-medium hover:shadow-lg hover:shadow-emerald-500/20 transition-all">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CookIt</h3>
+                    <p class="text-gray-400">
+                        Transforming kitchens with AI technology and making cooking easier for everyone.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="careers.html" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="press.html" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="help.html" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="copyright-year"></span> CookIt. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('form');
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const emailInput = e.target.querySelector('input[type="email"]');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            try {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+                
+                // Simulate form submission
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } catch (error) {
+                alert('Failed to subscribe. Please try again.');
+            } finally {
+                submitBtn.textContent = originalText;
+            }
+        });
+    </script>
+</body>
+</html>
